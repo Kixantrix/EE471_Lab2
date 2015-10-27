@@ -10,11 +10,12 @@ module Nor(a, b, out);
 	input [31:0] a, b;
 	// 32 bit output from system;
 	output [31:0] out;
+	parameter DELAY = 50;
 	
 	genvar i;
 	generate
 	  for ( i = 0; i < 32; i = i + 1 ) begin: nors
-		 nor ngate(out[i], a[i], b[i]);
+		 nor #(DELAY) ngate(out[i], a[i], b[i]);
 	  end
 	endgenerate
 endmodule
