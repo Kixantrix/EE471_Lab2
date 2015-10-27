@@ -5,12 +5,16 @@ to out.
 
 Michael Von Hippel
 */
-module nor(a, b, out);
+module Nor(a, b, out);
 	// Two 32 bit inputs to the system
 	input [31:0] a, b;
 	// 32 bit output from system;
 	output [31:0] out;
-
-	// Bitwise NOR out of negation of OR
-	assign out = ~(a | b);
+	
+	genvar i;
+	generate
+	  for ( i = 0; i < 32; i = i + 1 ) begin: nors
+		 nor ngate(out[i], a[i], b[i]);
+	  end
+	endgenerate
 endmodule
