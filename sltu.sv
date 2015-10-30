@@ -8,14 +8,15 @@ Michael Von Hippel
 
 `timescale 1 ps / 100 fs
 
-module sltu(negative, overflow, out);
+module sltu(negative, carry, out);
 	// Negative and overflow flags from subtraction
-	input negative, overflow;
+	input negative, carry;
 	// 32 bit output from system;
 	output [31:0] out;
 	parameter DELAY = 50;
 	// Keep all other bits at 0.
 	assign out[31:1] = 31'b0;
-	
-	xor #(DELAY) ngate(out[0], negative, overflow);
+	//assign out[0] = ~overflow;
+	not #(DELAY) n(out[0], carry);
+	//and #(DELAY) ngate(out[0], negative, overflow);
 endmodule

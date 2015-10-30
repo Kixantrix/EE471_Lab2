@@ -17,7 +17,7 @@ module alu(out, carryout, zero, overflow, negative, bus_a, bus_b, alu_cntr);
   
 
   // sltu module with separate output
-  sltu sltu_mod(.negative(negative), .overflow(overflow), .out(sltuOut));
+  sltu sltu_mod(.negative(adderOut[31]), .carry(carryout), .out(sltuOut));
   
   // 32 bit nor module for nor operation.
   Nor nor_mod(.a(bus_a), .b(bus_b), .out(norOut));
@@ -35,11 +35,7 @@ module alu(out, carryout, zero, overflow, negative, bus_a, bus_b, alu_cntr);
   // Test if output is 0 and make flag.
   zero_test zero_tester(.in(out), .out(zero));
   
-  // Test if top bit of out and carry are same sign.
-  //and neg_tester(negative, out[31], carryout);
   assign negative = out[31];
   
-  // Determine overflow from xor of top bit and carryout/
-  //xor overflow_tester(overflow, out[31], carryout);
 
 endmodule
