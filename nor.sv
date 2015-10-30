@@ -5,6 +5,8 @@ to out.
 
 Michael Von Hippel
 */
+`timescale 1 ps / 100 fs
+
 module Nor(a, b, out);
 	// Two 32 bit inputs to the system
 	input [31:0] a, b;

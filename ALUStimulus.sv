@@ -27,12 +27,6 @@ module ALUStimulus();
 			BussA=32'h00000DEF; BussB=32'h00000ABC; #(ClockDelay); // Should output 000018AB 
 			BussA=32'h00001234; BussB=32'h00000105; #(ClockDelay); // Should output 00001339
 			BussA=32'h7FFFFFFF; BussB=32'h00000001; #(ClockDelay); // Should output 80000000, overflow, negative
-			
-			/* Subtraction unit testing */
-			ALUControl=01; 
-			BussA=32'h00000DEF; BussB=32'h00000ABC; #(ClockDelay); // Should output 00000333
-			BussA=32'h00001234; BussB=32'h00000105; #(ClockDelay); // Should output 0000112F	
-			BussA=32'h80000000; BussB=32'h00000001; #(ClockDelay); // Should output 7FFFFFFF, overflow
 
 			/* You should test your units EXTENSIVELY here.  We just gave a few ideas
 	         above to get you started.  Make sure you've checked all outputs for

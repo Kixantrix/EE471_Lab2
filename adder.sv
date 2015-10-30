@@ -7,12 +7,12 @@ Author: Max Golub
 */
 `timescale 1 ps / 100 fs
 
-module adder(out, Cout, A, B, Cin);
+module adder(out, Cout, overflow, A, B, Cin);
 
 	parameter width = 32;
 	parameter DELAY = 50;
  	output [width-1:0] out;
- 	output Cout;
+ 	output Cout, overflow;
   	input [width-1:0] A, B;
   	input Cin;
 
@@ -112,6 +112,7 @@ module adder(out, Cout, A, B, Cin);
     	end
 	endgenerate
 
+	xor #(DELAY) (overflow, Cout, Cn[width-2]); //The carry out and carry in values.
   
 
 endmodule

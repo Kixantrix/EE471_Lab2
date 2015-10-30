@@ -5,6 +5,9 @@ Outputs result as 1 if less than, otherwise 0.
 
 Michael Von Hippel
 */
+
+`timescale 1 ps / 100 fs
+
 module sltu(negative, overflow, out);
 	// Negative and overflow flags from subtraction
 	input negative, overflow;

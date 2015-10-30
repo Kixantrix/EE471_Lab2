@@ -2,6 +2,8 @@
 Return the two's comp of a number (well...just the negation...)
 */
 
+`timescale 1 ps / 100 fs
+
 module negative(out, in);
 
 	output [31:0] out;

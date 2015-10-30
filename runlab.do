@@ -20,6 +20,7 @@ vlog "./Mux_32_4x1.sv"
 vlog "./Mux_32_4x1_testbench.sv"
 vlog "./zero_test.sv"
 vlog "./zero_test_testbench.sv"
+vlog "./negative.sv"
 vlog "./alu.sv"
 vlog "./ALUStimulus.sv"
 
