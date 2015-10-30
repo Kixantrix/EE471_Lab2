@@ -13,10 +13,6 @@ module adder_testbench();
 
 	longint i, j;
 
-	// If your register file module is not named "alu" then you will
-	// have to change the following line in order to create an instance of
-	// your register file.  Also you must make sure that the port declarations
-	// match up with the module instance in this stimulus file.
 	adder add(.out(Output), .Cout(Cout), .A(BussA), .B(BussB), .Cin(1'b0));
 
 	initial begin
@@ -34,12 +30,5 @@ module adder_testbench();
 				assert(Output == i+j) else $fatal;
 			end
 		end
-		//BussA = 2147483647/2;
-		//BussB = 2147483647/2;
-		//#ClockDelay;
-		//BussA = 871435125;
-		//BussB = 851759703;
-		//#ClockDelay;
-		//assert(Output == BussB+BussA);
 	end
 endmodule
