@@ -3,7 +3,7 @@
 
 module zero_test_testbench();
 
-	parameter ClockDelay = 1000;
+	parameter ClockDelay = 100000;
 
 	reg [31:0] in;
 	wire out;
@@ -17,8 +17,9 @@ module zero_test_testbench();
 			in = i;
 			if(i == 0)
 				assert(out == 1);
-			else:
-				assert(out != 0);
+			else
+				assert(out == 0) else $error("NOT CORRECT");
+			#ClockDelay;
 		end
 	end
 endmodule
