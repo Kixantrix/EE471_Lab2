@@ -15,22 +15,30 @@ module ALU(out, zero, overflow, carryout, negative, bus_a, bus_b, alu_cntr);
 
   wire [31:0] adderOut, norOut, sltuOut, mux_b;
   
-  wire [1:0][31:0] b_sel;
-  assign b_sel[0] = bus_b;
 
   // sltu module with separate output
   sltu sltu_mod(.negative(negative), .overflow(overflow), .out(sltuOut));
   
-  // 32 bit nor module for nor operation
+  // 32 bit nor module for nor operation.
   nor_32 nor_mod(.a(bus_a), .b(bus_b), .out(norOut));
   
-  // adder module which accepts mux out to choose 
-  adder adder_mod(.out(adderOut), Cout(Cout), .A(bus_a), .B(b_sel[alu_cntr[0]]), .Cin(alu_cntr[0]));
+  // adder module 
+  adder adder_mod(.out(adderOut), Cout(carrout), .A(bus_a), .B(mux_b), .Cin(alu_cntr[0]));
   
-  // Select subtract or addition
-  //Mux_32_2x1 sub_select(.out(mux_b), .in({bus_b, ~bus_b}), .select(alu_cntr[0]);
-  negative neg_mod(.out(b_sel[1]), .in(bus_b))
-  // Select correct output from submodules
+  negative neg_mod(.out(b_neg), .in(bus_b));
+  
+  // Select subtract or addition.
+  Mux_32_2x1 sub_select(.out(mux_b), .in({bus_b, b_neg}), .select(alu_cntr[0]));
+
   Mux_32_4x1 out_select(.out(out), .in({adderOut, adderOut, norOut, sltuOut}), .select(alu_cntr));
+  
+  // Test if output is 0 and make flag.
+  zero_test zero_tester(.in(out), .out(zero));
+  
+  // Test if top bit of out and carry are same sign.
+  and neg_tester(negative, out[31], carryout);
+  
+  // Determine overflow from xor of top bit and carryout/
+  xor overflow_tester(overflow, out[31], carryout);
 
 endmodule
