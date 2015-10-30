@@ -10,7 +10,7 @@ module ks_sub_testbench();
 
 	integer i, j;
 
-	adder ks_sub(P, G, P1, G1, P0, G0));
+	adder ks_sub(P, G, P1, G1, P0, G0);
 
 	initial begin
 		for (int i = 0; i < 2; i++) begin
@@ -18,7 +18,7 @@ module ks_sub_testbench();
 				P1 = j;
 				P0 = i;
 				G1 = j;
-				G0 - i;
+				G0 = i;
 			end
 		end
 	end
