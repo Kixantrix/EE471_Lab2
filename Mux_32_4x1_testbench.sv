@@ -1,7 +1,7 @@
 // Test bench for Mux_32_2x1
 `timescale 1 ps / 100 fs
 
-module Mux_32_2x1_testbench();
+module Mux_32_4x1_testbench();
 
 	parameter ClockDelay = 1000;
 	

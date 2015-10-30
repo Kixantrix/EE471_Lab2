@@ -6,35 +6,20 @@ Passes testbench
 */
 
 module Mux_32_4x1(out, in, select);
-	
-	output out[31:0];
+
+	output [31:0] out;
 	input [3:0][31:0] in;
 	input [1:0] select;
 
-	parameter DELAY = 50;
-
-	wire [1:0] select_not;
-
-	//Generate statement for the select_not signals
-	//mostly generate practice...
 	genvar i;
 	generate
-	  for ( i = 0; i < 2; i = i+1 ) begin: notgates
-	    not #(DELAY) N( select_not[i], select[i]);
-		end
+	  for ( i = 0; i < 2; i = i+1 ) begin: muxes
+	  	wire [31:0] out; 
+	    Mux_32_2x1 Mux32(out, in[i*2+1:i*2], select[0]);
+	  end
 	endgenerate
 
-	genvar j;
-	generate 
-		for (j = 0; j < 32; j++) begin: gates
-			wire [3:0] temps; //Wires to connect the and gates to the final or gate.
-			and #(DELAY) zero(temps[0], select_not[0], select_not[1], in[0][i]);
-			and #(DELAY) one(temps[1], select[0], select_not[1], in[1][i]);
-			and #(DELAY) two(temps[2], select_not[0], select[1], in[2][i]);
-			and #(DELAY) three(temps[3], select[0], select[1], in[3][i]);
-			or #(DELAY) stage2(out[i], temps[0], temps[1], temps[2], temps[3]);
-		end
-	endgenerate
-
+	//final Mux_32_2x1 mux.
+	Mux_32_2x1 FinalMux(.out(out), .in({muxes[0].out, muxes[1].out}), .select(select[1]));
 
 endmodule

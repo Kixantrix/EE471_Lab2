@@ -28,8 +28,8 @@ vlog "./Mux_32_4x1_testbench.sv"
 #vsim -voptargs="+acc" -t 1ps -lib work ks_sub_testbench
 #vsim -voptargs="+acc" -t 1ps -lib work nor_testbench
 #vsim -voptargs="+acc" -t 1ps -lib work sltu_testbench
-#vsim -voptargs="+acc" -t 1ps -lib work Mux_32_2x1_testbench
-vsim -voptargs="+acc" -t 1ps -lib work Mux_32_4x1_testbench
+vsim -voptargs="+acc" -t 1ps -lib work Mux_32_2x1_testbench
+#vsim -voptargs="+acc" -t 1ps -lib work Mux_32_4x1_testbench
 
 # Source the wave do file
 #     This should be the file that sets up the signal window for
@@ -38,8 +38,8 @@ vsim -voptargs="+acc" -t 1ps -lib work Mux_32_4x1_testbench
 #do sltu_wave.do
 #do adder.do
 #do ks_sub.do
-#do Mux_32_2x1.do
-do Mux_32_4x1.do
+do Mux_32_2x1.do
+#do Mux_32_4x1.do
 
 # Set the window types
 view wave
