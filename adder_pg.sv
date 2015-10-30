@@ -4,7 +4,9 @@ Propgate generate module for the Kogge-stone adder
 Author: Maximilian Golub
 */
 
-module adder_pg(P, G, a, b)
+`timescale 1 ps / 100 fs
+
+module adder_pg(P, G, a, b);
 
   output P, G;
   input a, b;
