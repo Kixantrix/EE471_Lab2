@@ -20,6 +20,6 @@ module Mux_32_4x1(out, in, select);
 	endgenerate
 
 	//final Mux_32_2x1 mux.
-	Mux_32_2x1 FinalMux(.out(out), .in({muxes[0].out, muxes[1].out}), .select(select[1]));
+	Mux_32_2x1 FinalMux(.out(out), .in({muxes[1].out, muxes[0].out}), .select(select[1]));
 
 endmodule
