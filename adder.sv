@@ -21,7 +21,7 @@ module adder(out, A, B, Cin);
     	end
  	endgenerate
 
- 	wire [width-1:0] P, G, Pi1, Pi2, Gi1, Gi2;
+ 	wire [width-1:0] P, G, Pi1, Pi2, Pi3, Pi4, Gi1, Gi2, Gi3, Gi4;
  	//Pass down signal that arent going through ks_sub modules. 
  	assign P[0] = pg[0].P;
  	assign G[0] = pg[0].G;
