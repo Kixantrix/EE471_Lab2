@@ -1,6 +1,8 @@
 /*
 A 32 bit Kogge–Stone adder
 
+It's blazingly fast and very tested!
+
 Author: Max Golub
 */
 `timescale 1 ps / 100 fs

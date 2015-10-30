@@ -13,6 +13,7 @@ vlog "./nor_testbench.sv"
 vlog "./nor.sv"
 vlog "./sltu.sv"
 vlog "./sltu_testbench.sv"
+vlog "./Mux2x1.sv"
 vlog "./Mux_32_2x1.sv"
 vlog "./Mux_32_2x1_testbench.sv"
 

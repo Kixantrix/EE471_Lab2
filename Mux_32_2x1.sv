@@ -13,7 +13,7 @@ module Mux_32_2x1(out, in, select);
 
 	generate
 		for (i=0; i < 32; i++) begin: muxgen
-			Mux2x1 mux21(.out(out[i]), .in(in[))
+			Mux2x1 mux21(.out(out[i]), .in({in[0][i], in[1][i]}), .select(select));
 		end
 	endgenerate
 
