@@ -3,7 +3,7 @@
 
 module adder_testbench();
 
-	parameter ClockDelay = 100000;
+	parameter ClockDelay = 1000;
 	parameter width = 32;
 
 	reg [width-1:0] BussA, BussB;
