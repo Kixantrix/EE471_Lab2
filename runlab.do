@@ -20,6 +20,8 @@ vlog "./Mux_32_4x1.sv"
 vlog "./Mux_32_4x1_testbench.sv"
 vlog "./zero_test.sv"
 vlog "./zero_test_testbench.sv"
+vlog "./alu.sv"
+vlog "./ALUStimulus.sv"
 
 
 # Call vsim to invoke simulator
@@ -32,7 +34,8 @@ vlog "./zero_test_testbench.sv"
 #vsim -voptargs="+acc" -t 1ps -lib work sltu_testbench
 #vsim -voptargs="+acc" -t 1ps -lib work Mux_32_2x1_testbench
 #vsim -voptargs="+acc" -t 1ps -lib work Mux_32_4x1_testbench
-vsim -voptargs="+acc" -t 1ps -lib work zero_test_testbench.sv
+#vsim -voptargs="+acc" -t 1ps -lib work zero_test_testbench
+vsim -voptargs="+acc" -t 1ps -lib work ALUStimulus
 
 # Source the wave do file
 #     This should be the file that sets up the signal window for
@@ -43,7 +46,8 @@ vsim -voptargs="+acc" -t 1ps -lib work zero_test_testbench.sv
 #do ks_sub.do
 #do Mux_32_2x1.do
 #do Mux_32_4x1.do
-do zero_test.do
+#do zero_test.do
+do alu.do
 
 # Set the window types
 view wave
