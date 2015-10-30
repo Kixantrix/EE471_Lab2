@@ -23,7 +23,7 @@ module ALU(out, zero, overflow, carryout, negative, bus_a, bus_b, alu_cntr);
   nor_32 nor_mod(.a(bus_a), .b(bus_b), .out(norOut));
   
   // adder module which accepts mux out to choose 
-  adder adder_mod(.out(adderOut), .A(bus_a), .B(mux_b), .Cin(Cin));
+  adder adder_mod(.out(adderOut), Cout(Cout), .A(bus_a), .B(mux_b), .Cin(Cin));
   
   // Select subtract or addition
   Mux_32_2x1 sub_select(.out(mux_b), .in({bus_b, ~bus_b}), .select(alu_cntr[0]);
