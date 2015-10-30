@@ -91,13 +91,13 @@ module adder(out, Cout, A, B, Cin);
 	endgenerate
 
 	wire[width-1:0] Cn;
-	assign Cout = Cn[width-1]
+	assign Cout = Cn[width-1];
 
 	generate
 		for (i = 0; i < width; i = i +1) begin: carry
 			wire P_Cn;
-      		and #(DELAY) (P_Cn, Pi2[i], Cin);
-      		or #(DELAY) (Cn[i], P_Cn, Gi2[i]);
+      		and #(DELAY) (P_Cn, Pi4[i], Cin);
+      		or #(DELAY) (Cn[i], P_Cn, Gi4[i]);
     	end
 	endgenerate
 

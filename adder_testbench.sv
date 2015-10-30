@@ -31,7 +31,7 @@ module adder_testbench();
 				BussA = i;
 				BussB = j;
 				#ClockDelay;
-				assert(Output == i+j);
+				assert(Output == i+j) else $fatal;
 			end
 		end
 		//BussA = 2147483647/2;
