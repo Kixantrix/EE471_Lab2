@@ -8,6 +8,7 @@ vlog "./adder_pg.sv"
 vlog "./ks_sub.sv"
 vlog "./adder.sv"
 vlog "./adder_testbench.sv"
+vlog "./ks_sub_testbench.sv"
 vlog "./nor_testbench.sv"
 vlog "./nor.sv"
 vlog "./sltu.sv"
@@ -18,7 +19,8 @@ vlog "./sltu_testbench.sv"
 #     Make sure the last item on the line is the name of the
 #     testbench module you want to execute.
 
-vsim -voptargs="+acc" -t 1ps -lib work adder_testbench
+#vsim -voptargs="+acc" -t 1ps -lib work adder_testbench
+vsim -voptargs="+acc" -t 1ps -lib work ks_sub_testbench
 #vsim -voptargs="+acc" -t 1ps -lib work nor_testbench
 #vsim -voptargs="+acc" -t 1ps -lib work sltu_testbench
 
@@ -27,7 +29,8 @@ vsim -voptargs="+acc" -t 1ps -lib work adder_testbench
 #     the module you are testing.
 #do nor_wave.do
 #do sltu_wave.do
-do adder.do
+#do adder.do
+do ks_sub.do
 
 # Set the window types
 view wave

@@ -10,7 +10,7 @@ module adder_testbench();
 
 	wire [width-1:0] Output;
 
-	integer i;
+	integer i, j;
 
 	// If your register file module is not named "alu" then you will
 	// have to change the following line in order to create an instance of
@@ -21,10 +21,15 @@ module adder_testbench();
 	initial begin
 
 		/* test the adder for every combos of a and b */
+		BussA = 0;
+		BussB = 0;
+		#ClockDelay;
 		for (int i = 0; i < width; i++) begin
-			BussA = i;
-			BussB = 1 << i;
-			#ClockDelay;
+			for (int j = 0; j < width; j++) begin
+				BussA = i;
+				BussB = j;
+				#ClockDelay;
+			end
 		end
 	end
 endmodule
