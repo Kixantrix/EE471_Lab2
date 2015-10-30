@@ -4,6 +4,8 @@ kogge stone submodule, which are chained together to form a full adder.
 Author: Maximilian Golub
 */
 
+`timescale 1 ps / 100 fs
+
 module ks_sub(P, G, P1, G1, P0, G0);
 
   output P, G;

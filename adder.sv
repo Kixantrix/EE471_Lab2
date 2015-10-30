@@ -3,6 +3,7 @@ A 32 bit Kogge–Stone adder
 
 Author: Max Golub
 */
+`timescale 1 ps / 100 fs
 
 module adder(out, A, B, Cin);
 
