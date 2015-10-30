@@ -17,7 +17,7 @@ module nor_testbench();
 	reg [31:0] a, b;
 	wire [31:0] out;
 
-	Nor dut(.a(a). .b(b), .out(out)); 
+	Nor dut(.a(a), .b(b), .out(out)); 
 
 	integer i;
 	initial begin
