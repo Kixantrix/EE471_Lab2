@@ -9,7 +9,7 @@ add wave -noupdate /ks_sub_testbench/G
 add wave -noupdate /ks_sub_testbench/i
 add wave -noupdate /ks_sub_testbench/j
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {16511 ps} 0}
+WaveRestoreCursors {{Cursor 1} {0 ps} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 150
 configure wave -valuecolwidth 100
@@ -25,4 +25,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ps
 update
-WaveRestoreZoom {0 ps} {105630 ps}
+WaveRestoreZoom {0 ps} {735 ns}

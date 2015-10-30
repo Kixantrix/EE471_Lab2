@@ -36,7 +36,7 @@ module adder(out, A, B, Cin);
  	assign Gi2[1] = Gi1[1];
  	//two
  	assign Pi2[2] = Pi1[2];
- 	assign Gi2[2] = Pi1[2];
+ 	assign Gi2[2] = Gi1[2];
  	//3
  	assign Pi2[3] = Pi1[3];
  	assign Gi2[3] = Gi1[3];
@@ -47,7 +47,7 @@ module adder(out, A, B, Cin);
 			//wire P, G; 
 			//wire Pi1, Gi1;
 			//wire Pi2, Gi2;
-			if(i != 0) //generate the first set of modules, which always connect back to i-1 except for 0.
+			if(i > 0) //generate the first set of modules, which always connect back to i-1 except for 0.
 				ks_sub  top_level(.P(P[i]), .G(G[i]), .P1(pg[i].P), .G1(pg[i].G), .P0(pg[i-1].P), .G0(pg[i-1].G));
 			if(i > 1)
 				ks_sub midlevel_1(.P(Pi1[i]), .G(Gi1[i]), .P1(P[i]), .G1(G[i]), .P0(P[i-2]), .G0(G[i-2]));
@@ -69,9 +69,9 @@ module adder(out, A, B, Cin);
 	generate
 		for (i = 0; i < width; i = i +1) begin: sum
       		if (i == 0) 
-      			xor #(DELAY) (out[0], Pi2[i],0); //xor #(DELAY) (out[i], Pi2[i], 0); //no Cn-1 for i = 0?
+      			xor #(DELAY) (out[i], pg[i].P, Cin); //xor #(DELAY) (out[i], Pi2[i], 0); //no Cn-1 for i = 0?
       		else
-      			xor #(DELAY) (out[i], Pi2[i], Cn[i-1]);
+      			xor #(DELAY) (out[i], pg[i].P, Cn[i-1]);
     	end
 	endgenerate
 

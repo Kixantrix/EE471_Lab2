@@ -16,7 +16,7 @@ module adder_testbench();
 	// have to change the following line in order to create an instance of
 	// your register file.  Also you must make sure that the port declarations
 	// match up with the module instance in this stimulus file.
-	adder add(.out(Output), .A(BussA), .B(BussB), .Cin(0));
+	adder add(.out(Output), .A(BussA), .B(BussB), .Cin(1'b0));
 
 	initial begin
 
@@ -24,11 +24,12 @@ module adder_testbench();
 		BussA = 0;
 		BussB = 0;
 		#ClockDelay;
-		for (int i = 0; i < width; i++) begin
-			for (int j = 0; j < width; j++) begin
+		for (int i = 0; i < 127; i++) begin
+			for (int j = 0; j < 127; j++) begin
 				BussA = i;
 				BussB = j;
 				#ClockDelay;
+				assert(Output == i+j);
 			end
 		end
 	end

@@ -19,8 +19,8 @@ vlog "./sltu_testbench.sv"
 #     Make sure the last item on the line is the name of the
 #     testbench module you want to execute.
 
-#vsim -voptargs="+acc" -t 1ps -lib work adder_testbench
-vsim -voptargs="+acc" -t 1ps -lib work ks_sub_testbench
+vsim -voptargs="+acc" -t 1ps -lib work adder_testbench
+#vsim -voptargs="+acc" -t 1ps -lib work ks_sub_testbench
 #vsim -voptargs="+acc" -t 1ps -lib work nor_testbench
 #vsim -voptargs="+acc" -t 1ps -lib work sltu_testbench
 
@@ -29,8 +29,8 @@ vsim -voptargs="+acc" -t 1ps -lib work ks_sub_testbench
 #     the module you are testing.
 #do nor_wave.do
 #do sltu_wave.do
-#do adder.do
-do ks_sub.do
+do adder.do
+#do ks_sub.do
 
 # Set the window types
 view wave
